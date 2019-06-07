@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,14 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    photos = [
-      {
-        url: '../assets/images/7683420775.jpg',
-        description: 'Leão1'
-      },
-      {
-        url: '../assets/images/8609251160.jpg',
-        description: 'Leão1'
-      }
-    ];
+    photos: Object[] = [];
+
+    constructor(http: HttpClient){
+      const observable = http.get<Object[]>('http://localhost:3000/flavio/photos').subscribe(
+      photos => this.photos = photos )}
 }
