@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-    photos: Object[] = [];
+export class AppComponent implements OnInit {
 
-    constructor(http: HttpClient){
-      const observable = http.get<Object[]>('http://localhost:3000/flavio/photos').subscribe(
-      photos => this.photos = photos )}
+
+    constructor(){
+    }
+
+    ngOnInit(): void {
+      //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+      //Add 'implements OnInit' to the class.
+    }
 }
